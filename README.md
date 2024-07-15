@@ -71,7 +71,7 @@ You need to have [Node.js (v18 LTS)](https://nodejs.org/en/download/), [Git](htt
 1. **Navigate to the Front-end directory and install dependencies:**
 
    ```sh
-   cd Front-end
+   cd Frontend
    npm install
    ```
 
