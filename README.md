@@ -24,7 +24,7 @@ You need to have [Node.js (v18 LTS)](https://nodejs.org/en/download/), [Git](htt
 1. **Clone the repository and navigate to the project directory:**
 
    ```sh
-   git clone [<repository-url>](https://github.com/Sokach1/FundTheWorld.git)
+   git clone https://github.com/Sokach1/FundTheWorld.git
    cd FundTheWorld
    ```
 
