@@ -1,0 +1,57 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+
+dataSources:
+  - kind: ethereum/contract
+    name: Crowdfunding
+    network: sepolia
+    source:
+      address: "0xA2260c7BDaf4087Ffd274E4A4010f5Ce4fA3d72A"
+      abi: Crowdfunding
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Project
+        - WithdrawalRequest
+      abis:
+        - name: Crowdfunding
+          file: ./Crowdfunding2.json
+      eventHandlers:
+        - event: ProjectCreated(uint256,indexed address,string,string,uint256,uint256,uint256)
+          handler: handleProjectCreated
+        - event: DonationReceived(indexed uint256,indexed address,uint256)
+          handler: handleDonationReceived
+        - event: FundsRefunded(indexed uint256)
+          handler: handleFundsRefunded
+        - event: WithdrawalRequested(indexed uint256,uint256,uint256,uint256,uint256)
+          handler: handleWithdrawalRequested
+        - event: WithdrawalVoted(indexed uint256,uint256,bool)
+          handler: handleWithdrawalVoted
+        - event: WithdrawalExecuted(indexed uint256,uint256)
+          handler: handleWithdrawalExecuted
+      file: ./Crowdfunding2.ts
+
+  - kind: ethereum/contract
+    name: CrowdfundingToken
+    network: sepolia
+    source:
+      address: "0xc13C72EE020eB659EcB4f95B83E5eDE007546eb9"
+      abi: CrowdfundingToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Token
+      abis:
+        - name: CrowdfundingToken
+          file: ./CrowdfundingToken.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        # - event: Approval(indexed address,indexed address,uint256)
+        #   handler: handleApproval
+      file: ./crowdfundingToken.ts

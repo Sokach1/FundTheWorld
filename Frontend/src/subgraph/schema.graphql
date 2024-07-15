@@ -1,0 +1,54 @@
+type Project @entity {
+  id: ID!
+  creator: String!
+  name: String!
+  description: String!
+  goal: BigInt!
+  startTime: BigInt!
+  endTime: BigInt!
+  fundsRaised: BigInt!
+  fundsRefunded: Boolean!
+  balance: BigInt!
+  contributors: [Contributor!]! @derivedFrom(field: "project")
+  withdrawalRequests: [WithdrawalRequest!]! @derivedFrom(field: "project")
+}
+
+type Contributor @entity {
+  id: ID!
+  project: Project!
+  address: String!
+  amount: BigInt!
+}
+
+type Contribution @entity {
+  id: ID!
+  contributors: String!
+  amount: BigInt!
+}
+
+type WithdrawalRequest @entity {
+  id: ID!
+  project: Project!
+  amount: BigInt!
+  description: String!
+  startTime: BigInt!
+  endTime: BigInt!
+  executed: Boolean!
+  approvalVotes: BigInt!
+  disapprovalVotes: BigInt!
+  approvers: [String!]!
+  disapprovers: [String!]!
+}
+
+type Token @entity {
+  id: ID!
+  name: String!
+  symbol: String!
+  totalSupply: BigInt!
+}
+
+type Vote @entity {
+  id: ID!
+  approve: Boolean!
+  disapprove: Boolean!
+}

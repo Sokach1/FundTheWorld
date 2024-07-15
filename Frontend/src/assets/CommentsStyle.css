@@ -1,0 +1,24 @@
+.comments-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.comment {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-details {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.comment-meta {
+    font-size: 12px;
+    color: #666;
+}
